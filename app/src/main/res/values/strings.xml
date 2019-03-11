@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">[FinalProject] Grab</string>
+
+    <!-- label text view -->
+    <string name="label_logo">Grab9</string>
+
+    <!--content description image -->
+    <string name="cdi_logo">logo</string>
+
+    <!-- title button -->
+    <string name="title_login">LOGIN</string>
+    <string name="title_sign_up_here">Don\'t have an account? <u>Sign up here.</u></string>
+    <string name="title_forgot_password"><u>Forgot password</u></string>
+
+    <!-- hint edit text -->
+    <string name="hint_phone">Phone</string>
+    <string name="hint_password">Password</string>
+</resources>
