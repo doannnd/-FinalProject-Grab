@@ -11,23 +11,7 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="true">
 
-        <activity android:name=".SplashActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity
-            android:name=".RegisterActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity android:name=".ForgotPasswordActivity"
+        <activity android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +21,23 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".ui.password.ForgotPasswordActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait">
 
         </activity>

@@ -18,7 +18,7 @@
     <string name="title_back">BACK</string>
 
     <!-- hint edit text -->
-    <string name="hint_phone">Phone</string>
+    <string name="hint_name">Full name</string>
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
 </resources>

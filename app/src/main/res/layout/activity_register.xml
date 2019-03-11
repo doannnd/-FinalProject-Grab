@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    tools:context=".ui.register.RegisterActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -51,9 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:background="@null"
-            android:hint="@string/hint_phone"
-            android:inputType="phone"
-            android:maxLength="11"
+            android:hint="@string/hint_name"
+            android:inputType="text"
+            android:maxLength="30"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:textSize="16sp" />

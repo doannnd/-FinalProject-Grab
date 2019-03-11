@@ -1,14 +1,16 @@
-package com.nguyendinhdoan.finalprojectgrab;
+package com.nguyendinhdoan.finalprojectgrab.ui.password;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+import com.nguyendinhdoan.finalprojectgrab.R;
+
+public class ForgotPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_forgot_password);
     }
 }
