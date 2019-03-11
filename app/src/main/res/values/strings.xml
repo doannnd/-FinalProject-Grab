@@ -21,4 +21,9 @@
     <string name="hint_name">Full name</string>
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
+
+    <!-- error message -->
+    <string name="error_full_name">Enter full name</string>
+    <string name="error_email">Enter a valid email</string>
+    <string name="error_password">Enter password</string>
 </resources>
