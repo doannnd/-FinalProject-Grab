@@ -3,16 +3,22 @@
 
     <!-- label text view -->
     <string name="label_logo">Grab9</string>
+    <string name="label_instruction">We just need your registered Email to sent you password reset instructions.</string>
 
     <!--content description image -->
     <string name="cdi_logo">logo</string>
 
     <!-- title button -->
     <string name="title_login">LOGIN</string>
+    <string name="title_register">REGISTER</string>
     <string name="title_sign_up_here">Don\'t have an account? <u>Sign up here.</u></string>
+    <string name="title_sign_in_here">Already have an account? <u>Sign in here.</u></string>
     <string name="title_forgot_password"><u>Forgot password</u></string>
+    <string name="title_reset_password">RESET PASSWORD</string>
+    <string name="title_back">BACK</string>
 
     <!-- hint edit text -->
     <string name="hint_phone">Phone</string>
     <string name="hint_password">Password</string>
+    <string name="hint_email">Email</string>
 </resources>
