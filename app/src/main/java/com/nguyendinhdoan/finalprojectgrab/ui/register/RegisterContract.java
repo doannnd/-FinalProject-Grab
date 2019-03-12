@@ -16,13 +16,6 @@ public interface RegisterContract {
         void onRegisterResponse(boolean isRegisterSuccess);
 
         void onError(String message);
-
-        void onFullNameError(String message);
-
-        void onEmailError(String message);
-
-        void onPasswordError(String message);
-
     }
 
     interface  RegisterToInteractor {
@@ -34,10 +27,5 @@ public interface RegisterContract {
 
         void onRegisterResponse(boolean isRegisterSuccess);
 
-        void onFullNameError(String message);
-
-        void onEmailError(String message);
-
-        void onPasswordError(String message);
     }
 }

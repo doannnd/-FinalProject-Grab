@@ -2,9 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout_register"
     android:background="@color/colorAccent"
     tools:context=".ui.register.RegisterActivity">
 
@@ -132,18 +132,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_register_layout_password" />
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/activity_register_avl_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:visibility="invisible"
-        app:indicatorColor="@color/colorBlack"
-        app:indicatorName="BallPulseIndicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_register_btn_register" />
-
     <Button
         android:id="@+id/activity_register_btn_launch_login"
         android:layout_width="wrap_content"
@@ -159,5 +147,18 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/activity_register_avl_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        style="@style/AVLoadingIndicatorView"
+        app:indicatorColor="@color/colorBlack"
+        app:indicatorName="BallPulseIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

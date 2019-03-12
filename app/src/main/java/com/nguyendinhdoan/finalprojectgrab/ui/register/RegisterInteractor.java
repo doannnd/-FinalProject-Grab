@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.nguyendinhdoan.finalprojectgrab.R;
+import com.nguyendinhdoan.finalprojectgrab.util.CommonUtil;
 
 public class RegisterInteractor implements RegisterContract.RegisterToInteractor {
 
@@ -23,19 +24,20 @@ public class RegisterInteractor implements RegisterContract.RegisterToInteractor
     }
 
     @Override
-    public void performRegisterOperation(final Context context, String fullName, String email, String password) {
-        if(TextUtils.isEmpty(fullName)) {
-            listener.onFullNameError(context.getString(R.string.error_full_name));
+    public void performRegisterOperation(Context context, String fullName, String email, String password) {
+
+        if (!CommonUtil.validateFullName(fullName)) {
+            listener.onError(context.getString(R.string.error_full_name).toUpperCase());
             return;
         }
 
-        if (TextUtils.isEmpty(email) || !isValidEmail(email)) {
-            listener.onEmailError(context.getString(R.string.error_email));
+        if (!CommonUtil.validateEmail(email)) {
+            listener.onError(context.getString(R.string.error_email).toUpperCase());
             return;
         }
 
-        if (TextUtils.isEmpty(password) || password.length() < 6) {
-            listener.onPasswordError(context.getString(R.string.error_password));
+        if (!CommonUtil.validatePassword(password)) {
+            listener.onError(context.getString(R.string.error_password).toUpperCase());
             return;
         }
 
@@ -53,9 +55,4 @@ public class RegisterInteractor implements RegisterContract.RegisterToInteractor
             }
         });
     }
-
-    private boolean isValidEmail(String email) {
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
 }

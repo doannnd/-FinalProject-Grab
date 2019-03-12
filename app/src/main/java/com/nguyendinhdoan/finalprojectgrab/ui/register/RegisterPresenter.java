@@ -14,7 +14,7 @@ public class RegisterPresenter implements RegisterContract.RegisterToPresenter,
     }
 
     @Override
-    public void register(Context context,  String fullName, String email, String password) {
+    public void register(Context context, String fullName, String email, String password) {
         view.showLoading();
         model.performRegisterOperation(context, fullName, email, password);
         view.hideLoading();
@@ -28,20 +28,5 @@ public class RegisterPresenter implements RegisterContract.RegisterToPresenter,
     @Override
     public void onRegisterResponse(boolean isRegisterSuccess) {
         view.onRegisterResponse(isRegisterSuccess);
-    }
-
-    @Override
-    public void onFullNameError(String message) {
-        view.onFullNameError(message);
-    }
-
-    @Override
-    public void onEmailError(String message) {
-        view.onEmailError(message);
-    }
-
-    @Override
-    public void onPasswordError(String message) {
-        view.onPasswordError(message);
     }
 }

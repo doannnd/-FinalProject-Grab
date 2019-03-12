@@ -8,18 +8,22 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.nguyendinhdoan.finalprojectgrab.R;
 import com.nguyendinhdoan.finalprojectgrab.ui.login.LoginActivity;
 import com.nguyendinhdoan.finalprojectgrab.ui.main.MainActivity;
+import com.nguyendinhdoan.finalprojectgrab.util.CommonUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterContract.RegisterToView{
+public class RegisterActivity extends AppCompatActivity implements RegisterContract.RegisterToView, TextWatcher {
 
     @BindView(R.id.layout_register)
     ConstraintLayout layoutRegister;
@@ -46,9 +50,15 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
+        addEvents();
         registerPresenter = new RegisterPresenter(this);
     }
 
+    private void addEvents() {
+        etFullName.addTextChangedListener(this);
+        etEmail.addTextChangedListener(this);
+        etPassword.addTextChangedListener(this);
+    }
 
 
     @OnClick(R.id.activity_register_btn_register)
@@ -72,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
     @Override
     public void hideLoading() {
-        avlLoading.setVisibility(View.INVISIBLE);
+        avlLoading.setVisibility(View.GONE);
     }
 
     @Override
@@ -84,20 +94,41 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     }
 
     @Override
-    public void onError(String message) { Snackbar.make(layoutRegister, message, Snackbar.LENGTH_LONG); }
-
-    @Override
-    public void onFullNameError(String message) {
-        layoutFullName.setError(message);
+    public void onError(String message) {
+        Snackbar.make(layoutRegister, message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
-    public void onEmailError(String message) {
-        layoutEmail.setError(message);
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
     }
 
     @Override
-    public void onPasswordError(String message) {
-        layoutPassword.setError(message);
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
     }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        if (!CommonUtil.validateFullName(etFullName.getText().toString())) {
+            layoutFullName.setError(getString(R.string.error_full_name));
+            return;
+        } else {
+            layoutFullName.setErrorEnabled(false);
+        }
+
+        if (!CommonUtil.validateEmail(etEmail.getText().toString())) {
+            layoutEmail.setError(getString(R.string.error_email));
+            return;
+        } else {
+            layoutEmail.setErrorEnabled(false);
+        }
+
+        if (!CommonUtil.validatePassword(etPassword.getText().toString())) {
+            layoutPassword.setError(getString(R.string.error_password));
+        } else {
+            layoutPassword.setErrorEnabled(false);
+        }
+    }
+
 }
