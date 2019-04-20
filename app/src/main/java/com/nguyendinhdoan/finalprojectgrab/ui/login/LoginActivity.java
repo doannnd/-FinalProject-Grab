@@ -23,7 +23,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.LoginToView, TextWatcher, TextView.OnEditorActionListener {
+public class LoginActivity extends AppCompatActivity implements LoginContract.LoginToView,
+        TextWatcher, TextView.OnEditorActionListener {
 
     public static final String LOGIN_USER_FULL_NAME = "LOGIN_USER_FULL_NAME";
     public static final String LOGIN_USER_EMAIL = "LOGIN_USER_EMAIL";

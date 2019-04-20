@@ -41,5 +41,11 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_logout">Logout</string>
     <string name="title_activity_maps">Passenger Map</string>
+    <string name="expandable_image_view">expandable image view</string>
+    <string name="pickup_request_button_text">Pickup Request</string>
+    <string name="request_pickup_image">request pickup image</string>
+    <string name="pickup_here_text">Pickup Here</string>
+    <string name="optional_text">Optional</string>
+    <string name="getting_your_driver">Getting your DRIVER...</string>
 
 </resources>

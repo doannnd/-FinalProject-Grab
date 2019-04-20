@@ -27,30 +27,17 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_passenger_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        map:layout_constraintBottom_toBottomOf="parent"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toBottomOf="@+id/activity_main_toolbar"
-        tools:context=".ui.passenger.MapsActivity" />
-
     <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_main_toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,34 +48,96 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:inputType="text"
-                android:hint="@string/hint_current_location"
-                android:textColorHint="@color/colorBlack"
-                android:textSize="14sp"
                 android:drawableStart="@drawable/ic_current_location"
-                android:textCursorDrawable="@drawable/color_cursor_login"/>
+                android:hint="@string/hint_current_location"
+                android:inputType="text"
+                android:textColorHint="@color/colorBlack"
+                android:textCursorDrawable="@drawable/color_cursor_login"
+                android:textSize="14sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/colorGrayDark"
                 android:layout_marginStart="50dp"
-                android:layout_marginEnd="30dp"/>
+                android:layout_marginEnd="30dp"
+                android:background="@color/colorGrayDark" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:inputType="text"
-                android:hint="@string/hint_go_location"
-                android:textColorHint="@color/colorGray"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:drawableStart="@drawable/ic_go_location"
-                android:textCursorDrawable="@drawable/color_cursor_login"/>
+                android:hint="@string/hint_go_location"
+                android:inputType="text"
+                android:textColorHint="@color/colorGray"
+                android:textCursorDrawable="@drawable/color_cursor_login"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_passenger_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        map:layout_constraintBottom_toTopOf="@id/card_view_pickup_request"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:context=".ui.passenger.MapsActivity" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view_pickup_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/activity_main_iv_expandable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/expandable_image_view"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_up" />
+
+            <Button
+                android:id="@+id/activity_main_btn_request_pickup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_main_iv_expandable"
+                android:layout_margin="8dp"
+                android:background="@android:color/holo_blue_dark"
+                android:text="@string/pickup_request_button_text"
+                android:textColor="@color/colorWhite" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/activity_passenger_avl_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorBlue"
+        app:indicatorName="BallPulseIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

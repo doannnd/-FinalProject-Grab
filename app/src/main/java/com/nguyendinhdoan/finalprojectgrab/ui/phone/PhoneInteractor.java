@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -12,18 +13,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nguyendinhdoan.finalprojectgrab.model.User;
 
 import java.util.concurrent.TimeUnit;
 
 public class PhoneInteractor implements PhoneContract.PhoneToInteractor {
 
+    private static final String TAG = "PhoneInteractor";
     public static final Long VERIFICATION_CODE_TIMEOUT_DURATION = 30L;
 
     private String verificationId;
-
     private PhoneContract.OnPhoneListener listener;
 
     public PhoneInteractor(PhoneContract.OnPhoneListener listener) {
@@ -52,6 +53,7 @@ public class PhoneInteractor implements PhoneContract.PhoneToInteractor {
                     @Override
                     public void onVerificationFailed(FirebaseException e) {
                         listener.onSendVerificationCodeFailed(e.getMessage());
+                        Log.e(TAG, e.getMessage());
                     }
                 }
         );
@@ -80,6 +82,7 @@ public class PhoneInteractor implements PhoneContract.PhoneToInteractor {
                     createUserInDatabase(fullName, email, phone);
                 }   else {
                     listener.onLoginWithCredentialFailed(task.getException().getMessage());
+                    Log.e(TAG, task.getException().getMessage());
                 }
                 listener.hideLoading();
             }
@@ -87,23 +90,23 @@ public class PhoneInteractor implements PhoneContract.PhoneToInteractor {
     }
 
     private void createUserInDatabase(String fullName, String email, String phone) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference documentUser = db.collection("users").document();
+        DatabaseReference users = FirebaseDatabase.getInstance().getReference().child("users");
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
+        // set data for user
         User user = new User();
         user.setUserId(userId);
         user.setFullName(fullName);
         user.setEmail(email);
         user.setPhone(phone);
 
-        documentUser.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        users.child(userId).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     listener.onLoginWithCredentialSuccess(true);
                 } else {
                     listener.onLoginWithCredentialFailed(task.getException().getMessage());
+                    Log.e(TAG, task.getException().getMessage());
                 }
             }
         });
